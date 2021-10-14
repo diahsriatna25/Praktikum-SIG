@@ -57,8 +57,10 @@ $routes->get('/about', function (){
     echo view('layouts/footer');
 	//supaya tidak kebanyakan controller
 });
-
-
+$routes->get('/admin', 'Templating::index');
+$routes->get('/admin/posts', 'AdminPostsController::index');
+$routes->get('/admin/posts/create', 'AdminPostsController::create');
+$routes->get('/admin/posts/store', 'AdminPostsController::store');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
