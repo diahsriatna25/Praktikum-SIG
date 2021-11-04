@@ -79,7 +79,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
               <li class="breadcrumb-item active">My Post</li>
             </ol>
           </div><!-- /.col -->
@@ -88,6 +88,12 @@
     </div>
     <!-- /.content-header -->
     <!-- /.content -->
+    <section class="content">
+      <?php if (session()->getFlashdata('pesan')) : ?>
+        <div class="alert alert-success" role="alert">
+          <?= session()->getFlashdata('pesan'); ?>
+        </div>
+      <?php endif; ?>
     <div class="container">
         <a href="/admin/posts/create" class="btn btn-primary"> <i class="fas fa-plus"></i>Tambah Data</a>
         <div class="card mt-3">
@@ -104,7 +110,7 @@
               <th scope="col">Slug</th>
               <th scope="col">Author</th>
               <th scope="col">Kategori</th>
-              <th scope="col">action</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -116,8 +122,12 @@
             <td><?= $post['author'] ?></td>
             <td><?= $post['kategori'] ?></td>
             <td align="center">
-              <a href="/admin/posts/edit/<?= $post['slug']; ?>" class="btn btn-sm btn-warning me-1"><i class="fas fa-edit"></i>Edit</a>
-              <a href="/admin/posts/delete/<?= $post['slug']; ?>" class="btn btn-sm btn-danger me-1"><i class="fas fa-trash"></i>Delete</a>
+              <a href="posts/edit/<?= $post['post_id']; ?>" class="btn btn-sm btn-warning me-1"><i class="fas fa-edit"></i>Edit</a>
+              <form action="posts/<?= $post['post_id']; ?>" method="post" class="d-inline">
+                      <?= csrf_field(); ?>
+                      <input type="hidden" name="_method" value="delete">
+                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ?');"><i class="fas fa-trash"></i> Delete </button>
+                      </form>>
               </td>
             </tr>
             <?php endforeach; ?>

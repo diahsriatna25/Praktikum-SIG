@@ -32,7 +32,10 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', function (){
+
+$routes->get('/', 'Templating::register');
+
+$routes->get('/home', function (){
 	$data = [
 		'title' => "Blog - Home"
 	];
@@ -42,10 +45,12 @@ $routes->get('/', function (){
 	echo view('layouts/footer');;
 });
 
+
 $routes->get('/admin', 'Templating::index');
-$routes->get('/register', 'Templating::register');
+//$routes->get('/register', 'Templating::register');
 $routes->post('/saveRegister', 'Templating::saveRegister');
 $routes->get('/posts', 'PostController::index');
+
 
 $routes->get('/about', function (){ 
 	$data = [
@@ -57,10 +62,13 @@ $routes->get('/about', function (){
     echo view('layouts/footer');
 	//supaya tidak kebanyakan controller
 });
-$routes->get('/admin', 'Templating::index');
+//$routes->get('/admin', 'Templating::index');
 $routes->get('/admin/posts', 'AdminPostsController::index');
 $routes->get('/admin/posts/create', 'AdminPostsController::create');
-$routes->get('/admin/posts/store', 'AdminPostsController::store');
+$routes->post('/admin/posts/store', 'AdminPostsController::store');
+$routes->delete('/admin/posts/(:num)', 'AdminPostsController::delete/$1');
+$routes->get('/admin/posts/edit/(:num)', 'AdminPostsController::edit/$1');
+$routes->post('/admin/posts/update/(:num)', 'AdminPostsController::update/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -37,7 +37,7 @@
           <img src="/assets/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Diah Adi Sriatna</a>
         </div>
       </div>
 
@@ -79,7 +79,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
               <li class="breadcrumb-item active">My Post</li>
             </ol>
           </div><!-- /.col -->
@@ -91,10 +91,10 @@
     <div class="container">
     <div class="card">
         <div class="card-header">
-            Form Tambah Posts
+            Form Edit Posts
         </div>
         <div class="card-body">
-            <form action="/admin/posts/store" method="POST">
+            <form action="/admin/posts/update/<?=$post['post_id'];?>" method="post">>
                 <div class="row">
                 <div class="col-md-4">
                 <div class="form-group">
