@@ -94,7 +94,7 @@
             Form Edit Posts
         </div>
         <div class="card-body">
-            <form action="/admin/posts/update/<?=$post['post_id'];?>" method="post">>
+            <form action="/admin/posts/update/<?=$post['post_id'];?>" method="post">
                 <div class="row">
                 <div class="col-md-4">
                 <div class="form-group">

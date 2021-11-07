@@ -127,7 +127,7 @@
                       <?= csrf_field(); ?>
                       <input type="hidden" name="_method" value="delete">
                       <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ?');"><i class="fas fa-trash"></i> Delete </button>
-                      </form>>
+                      </form>
               </td>
             </tr>
             <?php endforeach; ?>
